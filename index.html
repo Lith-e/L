@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leelaambika Nandhakumar | AI/ML Engineer</title>
+    <title>Leelaambika Nandhakumar | AI/ML Engineer & Full-Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -493,6 +493,7 @@
             transform: translateY(-5px);
         }
 
+        /* Projects Section New Styles */
         .projects {
             position: relative;
             background: var(--secondary);
@@ -500,7 +501,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 40px;
             max-width: 1200px;
         }
@@ -513,10 +514,9 @@
             transition: var(--transition);
             position: relative;
             border: 1px solid rgba(21, 54, 8, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            width: 100%;
+            padding-bottom: 100%; /* Creates a perfect square based on width */
+            height: 0; /* Important for padding-bottom trick */
         }
 
         .project-card:hover {
@@ -525,16 +525,18 @@
         }
 
         .project-img {
-            height: 200px;
+            position: absolute; /* Cover the entire card */
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
             overflow: hidden;
-            position: relative;
         }
 
         .project-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Cover the entire area */
             transition: var(--transition);
         }
 
@@ -551,62 +553,124 @@
             padding: 8px 15px;
             font-size: 0.9rem;
             font-weight: 600;
-            z-index: 2;
+            z-index: 3; /* Ensure badge is above all content */
             border-radius: 20px;
         }
 
-        .project-content {
-            padding: 30px;
+        /* Initial content visible on the card */
+        .project-brief-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.0)); /* Dark gradient for text readability */
+            color: var(--secondary);
+            text-align: center;
+            z-index: 2; /* Below badge, above image */
+            transition: var(--transition);
+            transform: translateY(0); /* Initially visible */
+        }
+
+        .project-card:hover .project-brief-content {
+            opacity: 0; /* Fade out on hover to reveal full content */
+            transform: translateY(100%); /* Move out of view */
+        }
+
+        .project-brief-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--secondary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .project-brief-content p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            margin-bottom: 0; /* Remove default margin */
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limit brief description to 2 lines */
+            -webkit-box-orient: vertical;
+            text-align: center;
+        }
+
+        /* Detailed content overlay on hover */
+        .project-content {
+            position: absolute; /* Overlay on top of the image */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Align content to the bottom */
+            padding: 25px; /* Adjust padding as needed */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.2)); /* Darker gradient overlay for readability */
+            color: var(--secondary); /* Text color for contrast */
+            text-align: center;
+            z-index: 2; /* Below badge, above image */
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease;
+            pointer-events: none; /* Allows hover on .project-card to trigger, but not on content directly */
+        }
+
+        .project-card:hover .project-content {
+            opacity: 1; /* Show on hover */
+            pointer-events: auto; /* Enable interactions when visible */
         }
 
         .project-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .project-content p {
-            margin-bottom: 25px;
-            color: var(--light-text);
-            font-size: 1.1rem;
-            line-height: 1.7;
-            text-align: justify;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            line-height: 1.5;
+            text-align: center;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* Limit description for readability */
+            -webkit-box-orient: vertical;
         }
 
-        .project-highlights {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
-            justify-content: center;
+        .project-content .btn {
+            background: var(--accent);
+            color: var(--primary-dark);
+            margin-top: auto;
+            box-shadow: none;
+            align-self: center; /* Center the button within the flex column */
         }
 
-        .highlight {
-            background: rgba(21, 54, 8, 0.1);
-            color: var(--primary);
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
+        .project-content .btn:hover {
+            background: var(--accent-dark);
         }
 
         .tech-stack {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 8px;
+            margin-bottom: 15px;
+            min-height: 30px; /* Ensure space even if no tech is listed */
         }
 
         .tech {
-            background: rgba(21, 54, 8, 0.1);
-            color: var(--primary);
-            padding: 6px 15px;
-            border-radius: 30px;
-            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--secondary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 500;
         }
+        /* End Projects Section New Styles */
 
         .contact-container {
             display: grid;
@@ -879,6 +943,10 @@
                 width: 120px;
                 height: 120px;
             }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -891,7 +959,7 @@
             }
 
             .projects-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Stack on smaller screens */
             }
 
             .language-globe {
@@ -937,6 +1005,15 @@
             .feature-text h3 {
                 font-size: 1.2rem;
             }
+            
+            /* Adjust project content for smaller screens */
+            .project-brief-content p {
+                -webkit-line-clamp: 1; /* Reduce lines for mobile brief */
+            }
+
+            .project-content p {
+                -webkit-line-clamp: 3; /* Reduce lines for mobile detailed */
+            }
         }
     </style>
 </head>
@@ -972,8 +1049,8 @@
                 </div>
                 <div class="about-text">
                     <h3>Bridging AI Innovation with Web Excellence</h3>
-                    <p>I craft intelligent systems that transform data into actionable insights, combining deep expertise in <strong>AI/ML</strong> with elegant web development. My passion lies at the intersection of cutting-edge algorithms and user-centric design, creating solutions that are both powerful and beautiful.</p>
-                    <p>With a strong foundation in <strong>TensorFlow</strong>, <strong>OpenCV</strong>, and full-stack development, I build solutions that solve real-world problems with precision and creativity. From computer vision systems that enhance safety to recommendation engines that personalize experiences, I transform complex challenges into intuitive solutions.</p>
+                    <p>I craft intelligent systems that transform data into actionable insights, combining deep expertise in <strong>AI/ML</strong> with elegant <strong>web development</strong>. My passion lies at the intersection of cutting-edge algorithms and user-centric design, creating solutions that are both powerful and beautiful.</p>
+                    <p>With a strong foundation in <strong>TensorFlow</strong>, <strong>OpenCV</strong>, and full-stack development, I build solutions that solve real-world problems with precision and creativity. From computer vision systems that enhance safety to recommendation engines that personalize experiences, I transform complex challenges into intuitive solutions. While AI/ML is my primary focus, my proficiency in web design and development allows me to deliver complete, end-to-end solutions.</p>
                     <div class="hero-btns">
                         <a href="#projects" class="btn">View Projects</a>
                         <a href="#contact" class="btn">Get in Touch</a>
@@ -1234,39 +1311,167 @@
                 <div class="project-card animate-on-scroll">
                     <div class="project-img">
                         <img src="AI.jpg" alt="AI-Powered Emergency Detection System">
-                        <div class="project-badge">Computer Vision</div>
+                    </div>
+                    <div class="project-badge">Computer Vision</div>
+                    <div class="project-brief-content">
+                        <h3>AI Emergency Detection System</h3>
+                        <p>Real-time emergency detection with YOLOv8 on Raspberry Pi.</p>
                     </div>
                     <div class="project-content">
                         <h3>AI Emergency Detection System</h3>
                         <p>Designed to solve critical safety challenges, this system uses <strong>YOLOv8</strong> on <strong>Raspberry Pi</strong> to detect emergencies in <strong>real-time</strong>. The solution addresses the need for rapid threat identification in resource-constrained environments. Achieved <strong>92% accuracy</strong> with <strong>30 FPS processing</strong> and <strong>4ms response time</strong>.</p>
-
-                        <a href="https://github.com/Leelaambika" class="btn" target="_blank">GitHub</a>
+                        <div class="tech-stack">
+                            <span class="tech">YOLOv8</span>
+                            <span class="tech">Raspberry Pi</span>
+                            <span class="tech">Python</span>
+                            <span class="tech">OpenCV</span>
+                        </div>
+                        <a href="https://github.com/Lith-e/AI-Safety-Detector" class="btn" target="_blank">GitHub</a>
                     </div>
                 </div>
 
                 <div class="project-card animate-on-scroll">
                     <div class="project-img">
                         <img src="Book.jpg" alt="Smart Book Recommendation Engine">
-                        <div class="project-badge">Machine Learning</div>
+                    </div>
+                    <div class="project-badge">Machine Learning</div>
+                    <div class="project-brief-content">
+                        <h3>Smart Book Recommendation Engine</h3>
+                        <p>Personalized book suggestions using content-based filtering.</p>
                     </div>
                     <div class="project-content">
                         <h3>Smart Book Recommendation Engine</h3>
                         <p>Created to enhance user engagement in digital libraries, this system uses <strong>content-based filtering</strong> with <strong>TF-IDF</strong> and <strong>cosine similarity</strong> to provide personalized book suggestions. Resulted in a <strong>35% increase</strong> in user engagement with <strong>87% recommendation accuracy</strong> across a catalog of <strong>10,000+ books</strong>.</p>
-                        <a href="https://github.com/Leelaambika" class="btn" target="_blank">GitHub</a>
+                        <div class="tech-stack">
+                            <span class="tech">Python</span>
+                            <span class="tech">Scikit-learn</span>
+                            <span class="tech">Pandas</span>
+                            <span class="tech">TF-IDF</span>
+                        </div>
+                        <a href="https://github.com/Lith-e/Book-recommendation-system" class="btn" target="_blank">GitHub</a>
                     </div>
                 </div>
 
                 <div class="project-card animate-on-scroll">
                     <div class="project-img">
                         <img src="Kdrama.jpg" alt="Sentiment Analysis Dashboard">
-                        <div class="project-badge">NLP</div>
+                    </div>
+                    <div class="project-badge">NLP</div>
+                    <div class="project-brief-content">
+                        <h3>K-Drama Sentiment Analysis</h3>
+                        <p>Analyzes viewer sentiment for Korean dramas using NLP.</p>
                     </div>
                     <div class="project-content">
                         <h3>K-Drama Sentiment Analysis</h3>
                         <p>Developed to analyze viewer sentiment for Korean dramas, this platform processes <strong>15,000+ reviews</strong> to provide actionable insights for content creators and marketers. Achieved <strong>87% accuracy</strong> with <strong>95% precision</strong> using advanced <strong>NLP techniques</strong> and <strong>data visualization</strong>.</p>
-
+                        <div class="tech-stack">
+                            <span class="tech">Python</span>
+                            <span class="tech">NLTK</span>
+                            <span class="tech">Streamlit</span>
+                            <span class="tech">Plotly</span>
+                        </div>
                         <a href="https://github.com/Leelaambika" class="btn" target="_blank">GitHub</a>
                     </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="med.png" alt="Hospital Management System"> </div>
+                    <div class="project-badge">Database/Backend</div>
+                    <div class="project-brief-content">
+                        <h3>Hospital Management System</h3>
+                        <p>Efficient patient, appointment, and billing management with SQL.</p>
+                    </div>
+                    <div class="project-content">
+                        <h3>Hospital Management System</h3>
+                        <p>A robust system designed for efficient hospital operations, managing patient records, appointments, billing, and staff schedules. Implemented with a strong SQL backend for data integrity and quick retrieval, enhancing administrative efficiency by <strong>40%</strong>.</p>
+                        <div class="tech-stack">
+                            <span class="tech">SQL</span>
+                            <span class="tech">Python (Flask)</span>
+                            <span class="tech">HTML</span>
+                            <span class="tech">CSS</span>
+                        </div>
+                        <a href="#" class="btn" target="_blank">View Details</a> </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="noodle.jpg" alt="Noodles Shop Webpage"> </div>
+                    <div class="project-badge">Web Development</div>
+                    <div class="project-brief-content">
+                        <h3>Noodles Shop Webpage</h3>
+                        <p>Interactive webpage with menu, franchise, and location info.</p>
+                    </div>
+                    <div class="project-content">
+                        <h3>Noodles Shop Webpage</h3>
+                        <p>An interactive and responsive webpage for a noodle shop, featuring a comprehensive menu, franchise information, and store locations. Designed to enhance customer experience and streamline online presence for the business.</p>
+                        <div class="tech-stack">
+                            <span class="tech">HTML5</span>
+                            <span class="tech">CSS3</span>
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">Responsive Design</span>
+                        </div>
+                        <a href="#" class="btn" target="_blank">View Details</a> </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="fund.jpg" alt="Financial Funds Webpage"> </div>
+                    <div class="project-badge">Web Design</div>
+                    <div class="project-brief-content">
+                        <h3>Financial Funds Webpage</h3>
+                        <p>Professional site for financial advisory, plans, location, and contact.</p>
+                    </div>
+                    <div class="project-content">
+                        <h3>Financial Funds Webpage</h3>
+                        <p>A professional website for a financial advisory firm, showcasing various investment plans, fund details, company location, and contact information. Built with a focus on clear information architecture and user trust.</p>
+                        <div class="tech-stack">
+                            <span class="tech">HTML</span>
+                            <span class="tech">CSS</span>
+                            <span class="tech">Bootstrap</span>
+                            <span class="tech">JavaScript</span>
+                        </div>
+                        <a href="#" class="btn" target="_blank">View Details</a> </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="note.jpg" alt="Note Taking Website"> </div>
+                    <div class="project-badge">Full-Stack</div>
+                    <div class="project-brief-content">
+                        <h3>Personal Note-Taking Website</h3>
+                        <p>Intuitive web app for creating, organizing, and managing personal notes.</p>
+                    </div>
+                    <div class="project-content">
+                        <h3>Personal Note-Taking Website</h3>
+                        <p>A clean and intuitive web application for creating, organizing, and managing personal notes. Features include rich text editing, search functionality, and secure user authentication, providing a seamless note-taking experience.</p>
+                        <div class="tech-stack">
+                            <span class="tech">React.js</span>
+                            <span class="tech">Node.js</span>
+                            <span class="tech">Express.js</span>
+                            <span class="tech">MongoDB</span>
+                        </div>
+                        <a href="#" class="btn" target="_blank">View Details</a> </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-img">
+                        <img src="it.jpg" alt="IT Company Portfolio"> </div>
+                    <div class="project-badge">Company Portfolio</div>
+                    <div class="project-brief-content">
+                        <h3>IT Company & Services Portfolio</h3>
+                        <p>Comprehensive site for an IT firm, school, and interior design branch.</p>
+                    </div>
+                    <div class="project-content">
+                        <h3>IT Company & Services Portfolio</h3>
+                        <p>A comprehensive website for an IT company, showcasing its diverse services, including an associated school and an interior design branch. Features distinct sections for each business unit, highlighting services, projects, and contact details, demonstrating versatility and expertise.</p>
+                        <div class="tech-stack">
+                            <span class="tech">HTML</span>
+                            <span class="tech">CSS</span>
+                            <span class="tech">JavaScript</span>
+                            <span class="tech">UI/UX Design</span>
+                        </div>
+                        <a href="#" class="btn" target="_blank">View Details</a> </div>
                 </div>
             </div>
         </div>
@@ -1307,7 +1512,7 @@
                             <h3>Connect</h3>
                             <div class="social-links">
                                 <a href="https://www.linkedin.com/in/leelaambika-nandhakumar-sln1418200405/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/Leelaambika" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/Lith-e" target="_blank"><i class="fab fa-github"></i></a>
                                 <a href="https://www.kaggle.com/leela4" target="_blank"><i class="fab fa-kaggle"></i></a>
                             </div>
                         </div>
