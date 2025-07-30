@@ -69,8 +69,6 @@
             color: var(--light-text);
             line-height: 1.8;
         }
-
-        /* Neomorphic Button */
         .btn {
             display: inline-block;
             padding: 14px 32px;
@@ -127,7 +125,6 @@
             transform: translateX(-50%);
         }
 
-               /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -253,7 +250,6 @@
             z-index: 3;
         }
 
-        /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -318,7 +314,6 @@
             letter-spacing: 1px;
         }
 
-        /* Skills Section */
         .skills {
             background: var(--dark-bg);
             color: var(--secondary);
@@ -414,7 +409,6 @@
             transition: width 1.5s ease-out;
         }
 
-        /* Languages Section */
         .languages {
             position: relative;
         }
@@ -499,7 +493,6 @@
             transform: translateY(-5px);
         }
 
-        /* Projects Section */
         .projects {
             position: relative;
             background: var(--secondary);
@@ -615,7 +608,6 @@
             font-weight: 500;
         }
 
-        /* Contact Section */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -685,27 +677,27 @@
 
         .contact-buttons {
             display: flex;
-            gap: 20px; /* Reduced gap for side-by-side */
+            gap: 20px;
             justify-content: center;
-            align-items: center; /* Align items for horizontal arrangement */
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            align-items: center; 
+            flex-wrap: wrap; 
         }
 
         .feature-btn {
             display: flex;
-            flex-direction: column; /* Stack icon and text */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 150px; /* Make buttons square */
-            height: 150px; /* Make buttons square */
+            width: 150px; 
+            height: 150px; 
             padding: 20px;
             background: var(--secondary);
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
             cursor: pointer;
-            text-align: center; /* Center text */
-            margin: 10px; /* Add margin for spacing */
+            text-align: center; 
+            margin: 10px; 
         }
 
         .feature-btn:hover {
@@ -714,18 +706,16 @@
         }
 
         .feature-btn i {
-            font-size: 3.5rem; /* Larger icon */
+            font-size: 3.5rem; 
             color: var(--primary);
-            margin-bottom: 10px; /* Space between icon and text */
+            margin-bottom: 10px; 
         }
 
         .feature-text h3 {
             font-size: 1.5rem;
             color: var(--primary);
-            text-align: center; /* Center text */
+            text-align: center;
         }
-
-        /* Webcam Modal */
         .modal {
             display: none;
             position: fixed;
@@ -746,12 +736,10 @@
             max-width: 600px;
             width: 90%;
             text-align: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Added shadow for modal */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); 
         }
-
-        /* XOXO Game */
         .game-container {
-            display: none; /* Controlled by JS to show */
+            display: none;
             padding: 20px;
             text-align: center;
         }
@@ -768,9 +756,9 @@
             grid-template-rows: repeat(3, 100px);
             gap: 5px;
             margin: 20px auto;
-            border: 2px solid var(--primary); /* Added border to game board */
+            border: 2px solid var(--primary); 
             border-radius: 10px;
-            overflow: hidden; /* To keep cells within border-radius */
+            overflow: hidden;
         }
 
         .game-cell {
@@ -785,7 +773,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
-            border: 1px solid rgba(21, 54, 8, 0.2); /* Cell border */
+            border: 1px solid rgba(21, 54, 8, 0.2); 
         }
 
         .game-cell:hover {
@@ -806,7 +794,6 @@
             margin-top: 20px;
         }
 
-        /* Photographer Popup - not used in this version but keeping styles */
         .photographer-popup {
             display: none;
             text-align: center;
@@ -825,7 +812,6 @@
             color: var(--light-text);
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -863,8 +849,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Responsive */
         @media (max-width: 992px) {
             .about-content,
             .contact-container {
@@ -887,7 +871,7 @@
             }
 
             .contact-buttons {
-                flex-direction: row; /* Keep side-by-side if space permits */
+                flex-direction: row;
                 justify-content: center;
             }
 
@@ -933,7 +917,7 @@
             }
 
             .light-bar {
-                height: 60px; /* Increased height to accommodate wrapping lights */
+                height: 60px; 
             }
 
             .light-bulb {
@@ -983,7 +967,7 @@
             <div class="about-content">
                 <div class="about-image">
                     <div class="polaroid-frame">
-                        <img src="images/profile.jpg" alt="Leelaambika Nandhakumar">
+                        <img src="profile.jpg" alt="Leelaambika Nandhakumar">
                     </div>
                 </div>
                 <div class="about-text">
@@ -1379,14 +1363,12 @@
     </div>
 
     <script>
-        
-        // Scroll animations
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
 
-                    // Animate skill bars
                     if (entry.target.classList.contains('skill-category')) {
                         const skillLevels = entry.target.querySelectorAll('.skill-level');
                         skillLevels.forEach(level => {
@@ -1405,18 +1387,16 @@
             observer.observe(el);
         });
 
-        // Clover button functionality
         const cloverModal = document.getElementById('clover-modal');
         const cloverBtn = document.getElementById('clover-btn');
-        const gameContainer = document.getElementById('game-container'); // Get the game container
+        const gameContainer = document.getElementById('game-container'); 
 
         cloverBtn.addEventListener('click', function() {
             cloverModal.style.display = 'flex';
-            gameContainer.style.display = 'block'; // Ensure game container is visible
+            gameContainer.style.display = 'block'; 
             initGame();
         });
 
-        // XOXO Game Implementation with Hard AI
         let currentPlayer = 'X';
         let gameBoard = ['', '', '', '', '', '', '', '', ''];
         let gameActive = true;
@@ -1425,7 +1405,6 @@
         const restartGameBtn = document.getElementById('restart-game');
         const closeGameBtn = document.getElementById('close-game');
 
-        // Messages for game events
         const messages = {
             win: ["I know you!", "Victory is mine!", "Better luck next time!", "Checkmate!"],
             lose: ["Are you that bad? o_o", "Too easy!", "Maybe try tic-tac-toe instead?"],
@@ -1476,17 +1455,15 @@
             currentPlayer = 'O';
             gameStatus.textContent = getRandomMessage(messages.aiTurn);
 
-            // AI move
             if (gameActive) {
                 setTimeout(makeAIMove, 800);
             }
         }
 
         function makeAIMove() {
-            // Hard AI using minimax algorithm
             const bestMove = getBestMove();
 
-            if (bestMove === undefined) { // In case no valid move is found (shouldn't happen in a non-full board)
+            if (bestMove === undefined) { 
                 gameActive = false;
                 return;
             }
@@ -1516,7 +1493,6 @@
         }
 
         function getBestMove() {
-            // Minimax algorithm for hard AI
             let bestScore = -Infinity;
             let move;
 
@@ -1536,20 +1512,17 @@
         }
 
         function minimax(board, depth, isMaximizing) {
-            // Scoring
             const scores = {
                 'O': 10 - depth,
                 'X': depth - 10,
                 'tie': 0
             };
 
-            // Check for terminal states
             const winner = checkWinner(board);
             if (winner !== null) {
                 return scores[winner];
             }
 
-            // Recursive minimax
             if (isMaximizing) {
                 let bestScore = -Infinity;
                 for (let i = 0; i < 9; i++) {
@@ -1577,9 +1550,9 @@
 
         function checkWinner(board) {
             const winPatterns = [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
-                [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
-                [0, 4, 8], [2, 4, 6]             // diagonals
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],  
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+                [0, 4, 8], [2, 4, 6]             
             ];
 
             for (let pattern of winPatterns) {
@@ -1613,7 +1586,6 @@
             cloverModal.style.display = 'none';
         });
 
-        // Anonymous message functionality with FormSubmit
         const messageModal = document.getElementById('message-modal');
         const otterBtn = document.getElementById('otter-btn');
         const closeMessage = document.getElementById('close-message');
@@ -1631,7 +1603,6 @@
             e.preventDefault();
             const message = this.message.value.trim();
             if (message) {
-                // FormSubmit will handle the actual submission
                 const formData = new FormData(this);
                 fetch(this.action, {
                     method: 'POST',
@@ -1663,7 +1634,6 @@
             }
         });
 
-        // Close modals when clicking outside
         window.addEventListener('click', function(event) {
             if (event.target === cloverModal) {
                 cloverModal.style.display = 'none';
@@ -1673,7 +1643,6 @@
             }
         });
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1684,9 +1653,7 @@
             });
         });
 
-        // Initialize animations
         document.addEventListener('DOMContentLoaded', function() {
-            // Animate hero elements
             setTimeout(() => {
                 document.querySelector('.hero h1').style.animation = 'fadeInUp 1s ease forwards';
                 document.querySelector('.hero-content p').style.animation = 'fadeInUp 1s ease forwards';
