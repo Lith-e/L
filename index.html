@@ -515,8 +515,8 @@
             position: relative;
             border: 1px solid rgba(21, 54, 8, 0.1);
             width: 100%;
-            padding-bottom: 100%; /* Creates a perfect square based on width */
-            height: 0; /* Important for padding-bottom trick */
+            padding-bottom: 100%;
+            height: 0; 
         }
 
         .project-card:hover {
@@ -525,7 +525,7 @@
         }
 
         .project-img {
-            position: absolute; /* Cover the entire card */
+            position: absolute; 
             top: 0;
             left: 0;
             width: 100%;
@@ -536,7 +536,7 @@
         .project-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Cover the entire area */
+            object-fit: cover;
             transition: var(--transition);
         }
 
@@ -553,28 +553,27 @@
             padding: 8px 15px;
             font-size: 0.9rem;
             font-weight: 600;
-            z-index: 3; /* Ensure badge is above all content */
+            z-index: 3; 
             border-radius: 20px;
         }
 
-        /* Initial content visible on the card */
         .project-brief-content {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             padding: 20px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.0)); /* Dark gradient for text readability */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.0)); 
             color: var(--secondary);
             text-align: center;
-            z-index: 2; /* Below badge, above image */
+            z-index: 2; 
             transition: var(--transition);
-            transform: translateY(0); /* Initially visible */
+            transform: translateY(0); 
         }
 
         .project-card:hover .project-brief-content {
-            opacity: 0; /* Fade out on hover to reveal full content */
-            transform: translateY(100%); /* Move out of view */
+            opacity: 0; 
+            transform: translateY(100%); 
         }
 
         .project-brief-content h3 {
@@ -589,37 +588,36 @@
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.4;
-            margin-bottom: 0; /* Remove default margin */
+            margin-bottom: 0; 
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* Limit brief description to 2 lines */
+            -webkit-line-clamp: 2; 
             -webkit-box-orient: vertical;
             text-align: center;
         }
 
-        /* Detailed content overlay on hover */
         .project-content {
-            position: absolute; /* Overlay on top of the image */
+            position: absolute; 
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end; /* Align content to the bottom */
-            padding: 25px; /* Adjust padding as needed */
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.2)); /* Darker gradient overlay for readability */
-            color: var(--secondary); /* Text color for contrast */
+            justify-content: flex-end; 
+            padding: 25px; 
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.2)); 
+            color: var(--secondary); 
             text-align: center;
-            z-index: 2; /* Below badge, above image */
-            opacity: 0; /* Hidden by default */
+            z-index: 2; 
+            opacity: 0; 
             transition: opacity 0.3s ease;
-            pointer-events: none; /* Allows hover on .project-card to trigger, but not on content directly */
+            pointer-events: none; 
         }
 
         .project-card:hover .project-content {
-            opacity: 1; /* Show on hover */
-            pointer-events: auto; /* Enable interactions when visible */
+            opacity: 1; 
+            pointer-events: auto; 
         }
 
         .project-content h3 {
@@ -637,7 +635,7 @@
             text-align: center;
             overflow: hidden;
             display: -webkit-box;
-            -webkit-line-clamp: 4; /* Limit description for readability */
+            -webkit-line-clamp: 4; 
             -webkit-box-orient: vertical;
         }
 
@@ -646,7 +644,7 @@
             color: var(--primary-dark);
             margin-top: auto;
             box-shadow: none;
-            align-self: center; /* Center the button within the flex column */
+            align-self: center; 
         }
 
         .project-content .btn:hover {
@@ -659,7 +657,7 @@
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 15px;
-            min-height: 30px; /* Ensure space even if no tech is listed */
+            min-height: 30px; 
         }
 
         .tech {
@@ -670,8 +668,6 @@
             font-size: 0.8rem;
             font-weight: 500;
         }
-        /* End Projects Section New Styles */
-
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -959,7 +955,7 @@
             }
 
             .projects-grid {
-                grid-template-columns: 1fr; /* Stack on smaller screens */
+                grid-template-columns: 1fr; 
             }
 
             .language-globe {
@@ -1006,13 +1002,12 @@
                 font-size: 1.2rem;
             }
             
-            /* Adjust project content for smaller screens */
             .project-brief-content p {
-                -webkit-line-clamp: 1; /* Reduce lines for mobile brief */
+                -webkit-line-clamp: 1; 
             }
 
             .project-content p {
-                -webkit-line-clamp: 3; /* Reduce lines for mobile detailed */
+                -webkit-line-clamp: 3; 
             }
         }
     </style>
@@ -1044,7 +1039,7 @@
             <div class="about-content">
                 <div class="about-image">
                     <div class="polaroid-frame">
-                        <img src="profile.jpg" alt="Leelaambika Nandhakumar">
+                        <img src="profile.jpg" alt="Leela">
                     </div>
                 </div>
                 <div class="about-text">
